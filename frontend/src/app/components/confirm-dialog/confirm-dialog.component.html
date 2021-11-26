@@ -1,0 +1,15 @@
+<div mat-dialog-title class="dialog-title" align="center">
+  <h1>{{ data.title || "Confirm" }}</h1>
+</div>
+<div mat-dialog-content align="center">
+  <mat-icon svgIcon="information" class="icon-46"></mat-icon>
+
+  <p>{{ data.message }}</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-stroked-button color="accent" mat-dialog-close>
+    {{ data.secondaryActionText }}</button
+  ><button mat-raised-button color="primary" (click)="primaryActionHandler()">
+    {{ data.primaryActionText }}
+  </button>
+</div>

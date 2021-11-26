@@ -1,0 +1,21 @@
+{
+  "name": "jakoi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "server-install": "cd backend && npm install",
+    "frontend-install": "cd frontend && npm install",
+    "postinstall": "npm run server-install && npm run frontend-install",
+    "server-start": "cd backend && npm start",
+    "frontend-start": "cd frontend && npm start",
+    "start": "npm-run-all -p server-start frontend-start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "npm-run-all": "^4.1.5",
+    "run-p": "0.0.0"
+  }
+}

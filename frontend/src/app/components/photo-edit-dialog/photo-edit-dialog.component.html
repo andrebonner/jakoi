@@ -1,0 +1,62 @@
+<div mat-dialog-title class="dialog-title">
+  <h1 *ngIf="photo.id">Edit Photo - {{ photo.name }}</h1>
+  <h1 *ngIf="!photo?.id">New Photo</h1>
+  <button mat-icon-button class="dialog-icon-close" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <form (ngSubmit)="save()" [formGroup]="photoForm">
+    <mat-error *ngIf="photoInvalid"> The photo is not saved </mat-error
+    ><mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        required
+      />
+      <mat-error> Please provide a valid name </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="url"
+        placeholder="Url"
+        formControlName="url"
+        required
+      />
+      <mat-error> Please provide a valid url </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <textarea
+        matInput
+        placeholder="Caption"
+        formControlName="caption"
+        required
+      ></textarea>
+      <mat-error> Please provide a valid caption </mat-error>
+    </mat-form-field>
+    <!-- <div class="space-between-content">
+      <a href="javascript:void(0)" class="sign-in">Sign in</a>
+    </div> -->
+  </form>
+</div>
+<div mat-dialog-actions class="space-between-content">
+  <div class="flex">
+    <button
+      mat-button
+      class=""
+      (click)="save()"
+      color="primary"
+      [disabled]="photoAttempt"
+    >
+      <mat-icon>save</mat-icon> Save
+    </button>
+    <mat-progress-spinner
+      *ngIf="photoAttempt"
+      mode="indeterminate"
+      diameter="30"
+    ></mat-progress-spinner>
+  </div>
+</div>

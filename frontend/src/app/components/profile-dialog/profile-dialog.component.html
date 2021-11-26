@@ -1,0 +1,68 @@
+<div class="dialog-title">
+  <h1 mat-dialog-title>Profile</h1>
+  <button mat-icon-button class="dialog-icon-close" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content align="center">
+  <img src="assets/images/profile.svg" alt="avatar" class="image-128" /> <br />
+  <a href="javascript:void(0)">{{ user.username }}</a>
+  <form (ngSubmit)="submit()" [formGroup]="profileForm">
+    <mat-error *ngIf="profileInvalid">
+      The profile could not be saved
+    </mat-error>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        required
+      />
+      <mat-error> Please provide a valid email address </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <mat-error> Please provide a valid password </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="password"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+        required
+      />
+      <mat-error> Please provide a matching password </mat-error>
+    </mat-form-field>
+    <div class="space-between-content">
+      <span class="created"
+        >Registered: {{ user.createdAt | date: "short" }}</span
+      >
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <div class="flex">
+    <button
+      mat-raised-button
+      (click)="submit()"
+      color="primary"
+      [disabled]="profileAttempt"
+    >
+      Save</button
+    >&nbsp;
+    <mat-progress-spinner
+      *ngIf="profileAttempt"
+      mode="indeterminate"
+      diameter="30"
+    ></mat-progress-spinner>
+  </div>
+</div>

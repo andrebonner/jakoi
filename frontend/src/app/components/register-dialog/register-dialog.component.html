@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Register</h1>
+<div mat-dialog-content>
+  <form (ngSubmit)="submit()" [formGroup]="registerForm">
+    <mat-error *ngIf="registerInvalid">
+      The email is already registered </mat-error
+    ><mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="email"
+        placeholder="Username"
+        formControlName="username"
+        required
+      />
+      <mat-error> Please provide a valid email address </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        required
+      />
+      <mat-error> Please provide a valid email address </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <mat-error> Please provide a valid password </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="password"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+        required
+      />
+      <mat-error> Please provide a matching password </mat-error>
+    </mat-form-field>
+    <div class="space-between-content">
+      <a href="javascript:void(0)" class="sign-in">Sign in</a>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="space-between-content">
+  <div class="flex">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="registerAttempt"
+    >
+      Register
+    </button>
+    &nbsp;
+    <mat-progress-spinner
+      *ngIf="registerAttempt"
+      mode="indeterminate"
+      diameter="30"
+    ></mat-progress-spinner>
+  </div>
+  <button mat-raised-button (click)="cancel()">Cancel</button>
+</div>

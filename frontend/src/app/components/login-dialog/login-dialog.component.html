@@ -1,0 +1,73 @@
+<h1 mat-dialog-title *ngIf="formMode === 'login'">Login</h1>
+<h1 mat-dialog-title *ngIf="formMode === 'forgot_password'">Forgot password</h1>
+<div mat-dialog-content>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <mat-error *ngIf="loginInvalid && formMode === 'login'">
+      The username and password were not recognized
+    </mat-error>
+    <mat-error *ngIf="loginInvalid && formMode === 'forgot_password'">
+      The email was not recognized </mat-error
+    ><mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="email"
+        placeholder="Username"
+        formControlName="username"
+        required
+      />
+      <mat-error> Please provide a valid email address </mat-error>
+    </mat-form-field>
+    <mat-form-field
+      class="full-width-input"
+      *ngIf="formMode === 'login'"
+      [disabled]="formMode !== 'login'"
+    >
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <mat-error> Please provide a valid password </mat-error>
+    </mat-form-field>
+    <div class="space-between-content">
+      <mat-checkbox formControlName="remember" *ngIf="formMode === 'login'"
+        >Remember me</mat-checkbox
+      >
+      <a
+        href="javascript:void(0)"
+        *ngIf="formMode === 'login'"
+        (click)="toggleForm('forgot_password')"
+        class="forgot-password"
+        >Forgot Password</a
+      ><a
+        href="javascript:void(0)"
+        *ngIf="formMode === 'forgot_password'"
+        (click)="toggleForm('login')"
+        class="sign-in"
+        >Sign in</a
+      >
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="space-between-content">
+  <div class="flex">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="login()"
+      [disabled]="loginAttempt"
+    >
+      <b *ngIf="formMode === 'login'">Login</b>
+      <b *ngIf="formMode === 'forgot_password'">Email Token</b>
+    </button>
+    &nbsp;
+    <mat-progress-spinner
+      *ngIf="loginAttempt"
+      mode="indeterminate"
+      diameter="30"
+    ></mat-progress-spinner>
+  </div>
+  <button mat-raised-button (click)="cancel()">Cancel</button>
+</div>

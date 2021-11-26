@@ -1,0 +1,33 @@
+.card-wrapper {
+  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.example-card {
+  max-width: 300px;
+  flex: 1 1 auto;
+  margin: 5px;
+}
+
+.example-card-image {
+  height: 250px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.top-menu,
+.bottom-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.top-menu button,
+.bottom-menu button {
+  padding: 0 5px;
+}
