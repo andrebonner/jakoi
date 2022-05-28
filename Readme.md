@@ -22,7 +22,7 @@ This website is built with Angular Cli
 
    - Clone the `.vscode.default` folder and rename it to `.vscode` to have access to recommended extensions, debug launch tasks and script tasks.
 
-Advantage General's website built with React.
+
 
 ## Set Up application
 
